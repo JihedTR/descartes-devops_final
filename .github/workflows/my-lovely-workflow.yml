@@ -14,6 +14,7 @@ jobs:
           # git config --global --add safe.directory '*'
           git branch -a
           git config -l
+          echo "hi jihed 1"
           
           
       - name: set release date
