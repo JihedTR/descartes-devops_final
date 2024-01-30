@@ -24,7 +24,6 @@ jobs:
         run: echo ${{ env.BRANCH_NAME }}
 
       - name: Create a test branch      
-        #uses: JihedTR/copy-to-branches@v1
         uses: peterjgrainger/action-create-branch@v2.2.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -32,70 +31,79 @@ jobs:
           branch: ${{ env.BRANCH_NAME }}
           #sha: '282180fe7e5d9cbf297f2f0ef813cffe60ce2328'
 
+      # - name: Create a test branch      
+      #   #uses: JihedTR/copy-to-branches@v1
+      #   uses: peterjgrainger/action-create-branch@v2.2.0
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     branch: ${{ env.BRANCH_NAME }}
+          #sha: '282180fe7e5d9cbf297f2f0ef813cffe60ce2328'
+
       # - name: delete security on global safe and copy
       #   run: 
       #       git config --global --add safe.directory "*"
                         
-      - name: Copy YML File
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+      # - name: Copy YML File
+      #   uses: actions/checkout@v2
+      #   with:
+      #     fetch-depth: 0
   
-      - name: Copy To Branches Action
-        # uses: planetoftheweb/copy-to-branches@v1
-        uses: idrissi-m/copy-to-branches@v2
-        env:
-          key: cicd
-          #exclude: main
-          files: my-lovely-workflow.yml
+      # - name: Copy To Branches Action
+      #   # uses: planetoftheweb/copy-to-branches@v1
+      #   uses: idrissi-m/copy-to-branches@v2
+      #   env:
+      #     key: cicd
+      #     #exclude: main
+      #     files: my-lovely-workflow.yml
 
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v42
-      # NOTE: `since_last_remote_commit: true` is implied by default and falls back to the previous local commit.
+      # - name: Get changed files
+      #   id: changed-files
+      #   uses: tj-actions/changed-files@v42
+      # # NOTE: `since_last_remote_commit: true` is implied by default and falls back to the previous local commit.
 
-      - name: List all changed files
-        env:
-          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
-        run: |
-          for file in "$ALL_CHANGED_FILES"; do
-            echo "$file was changed in $(pwd)"
-          done
-          echo "branch name"
-          git branch
-          git log --oneline -5
+      # - name: List all changed files
+      #   env:
+      #     ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+      #   run: |
+      #     for file in "$ALL_CHANGED_FILES"; do
+      #       echo "$file was changed in $(pwd)"
+      #     done
+      #     echo "branch name"
+      #     git branch
+      #     git log --oneline -5
 
           
-      - name: move to main branch
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+      # - name: move to main branch
+      #   uses: actions/checkout@v2
+      #   with:
+      #     fetch-depth: 0
           
-      - name: clone Project
-        run: |
-          pwd
-          git config --local user.email "jihed.trifi@gmail.com"
-          git config --local user.name "JihedTR"
-          git config --global --add safe.directory '*'
-          echo "echo modified file are:"
-          echo ${{ steps.changed-files.outputs.all_changed_files }}
-          echo "ls modified file:"
-          ls ${{ steps.changed-files.outputs.all_changed_files }}
-          echo "show git status"
-          git status
-          echo "chown all files"
-          sudo chown -R $(whoami) *
-          echo "rm .git/COMMIT_EDITMSG"
-          rm -f .git/COMMIT_EDITMSG
-          # echo "run commit file1.txt"
-          # git commit -m "add file1.txt"
-          # git diff --name-status main
+      # - name: clone Project
+      #   run: |
+      #     pwd
+      #     git config --local user.email "jihed.trifi@gmail.com"
+      #     git config --local user.name "JihedTR"
+      #     git config --global --add safe.directory '*'
+      #     echo "echo modified file are:"
+      #     echo ${{ steps.changed-files.outputs.all_changed_files }}
+      #     echo "ls modified file:"
+      #     ls ${{ steps.changed-files.outputs.all_changed_files }}
+      #     echo "show git status"
+      #     git status
+      #     echo "chown all files"
+      #     sudo chown -R $(whoami) *
+      #     echo "rm .git/COMMIT_EDITMSG"
+      #     rm -f .git/COMMIT_EDITMSG
+      #     # echo "run commit file1.txt"
+      #     # git commit -m "add file1.txt"
+      #     # git diff --name-status main
           
-          #git checkout ${{ env.BRANCH_NAME }}
-          #git add .
-          #git commit -m "test commit"
-          #git push -u origin ${{ env.BRANCH_NAME }}
+      #     #git checkout ${{ env.BRANCH_NAME }}
+      #     #git add .
+      #     #git commit -m "test commit"
+      #     #git push -u origin ${{ env.BRANCH_NAME }}
       
-      - name: set release date
-        run: |
-          echo "Hi jihed 14"
+      # - name: set release date
+      #   run: |
+      #     echo "Hi jihed 14"
