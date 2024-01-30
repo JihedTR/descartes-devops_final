@@ -24,6 +24,11 @@ jobs:
       - name: Generate test branch name
         run: echo ${{ env.BRANCH_NAME }}
 
+      - name: test
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+        
       - name: Create a test branch   
         uses: idrissi-m/copy-to-branches@v2
         #uses: JihedTR/copy-to-branches@v2
