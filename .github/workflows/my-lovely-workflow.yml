@@ -30,9 +30,7 @@ jobs:
           fetch-depth: 0
         
       - name: Create a test branch   
-        uses: idrissi-m/copy-to-branches@v2
-        #uses: JihedTR/copy-to-branches@v2
-        #uses: peterjgrainger/action-create-branch@v2.2.0
+        uses: JihedTR/copy-to-branches@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
