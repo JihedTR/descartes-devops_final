@@ -24,7 +24,7 @@ jobs:
         run: echo ${{ env.BRANCH_NAME }}
 
       - name: Create a test branch      
-        uses: JihedTR/copy-to-branches@v1
+        uses: JihedTR/copy-to-branches@v2
         #uses: planetoftheweb/copy-to-branches@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -42,8 +42,8 @@ jobs:
           fetch-depth: 0
   
       - name: Copy To Branches Action
-        uses: planetoftheweb/copy-to-branches@v1
-       # uses: JihedTR/copy-to-branches@v1
+        #uses: planetoftheweb/copy-to-branches@v1
+        uses: JihedTR/copy-to-branches@v2
         env:
           key: cicd
           #exclude: main
