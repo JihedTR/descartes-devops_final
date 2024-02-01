@@ -42,7 +42,7 @@ jobs:
   
       - name: Copy To Branches Action
         # uses: planetoftheweb/copy-to-branches@v1
-        uses: idrissi-m/copy-to-branches@v2
+        uses: JihedTR/copy-to-branches@v2
         env:
           key: cicd
           #exclude: main
