@@ -8,6 +8,15 @@ jobs:
   Backup:
     runs-on: ubuntu-latest
     steps:
+      - name: run 1
+        run: |
+          git clone https://github.com/JihedTR/devops-technical-test-data.git
+          cd devops-technical-test-data
+          git config --local user.email "jihed.trifi@gmail.com"
+          git config --local user.name "JihedTR"
+          # git config --global --add safe.directory '*'
+          git branch -a
+          git config -l
       - name: clone Project
         run: |
           echo "Test branch"
